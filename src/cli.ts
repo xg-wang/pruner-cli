@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import * as yargs from 'yargs';
 import { Pruner } from './Pruner';
+import { print } from './PruneStats';
 
 const argv = yargs
   .usage('Prune node_modules files and dependencies\n\nUsage: node-prune <path>')
@@ -9,5 +10,6 @@ const argv = yargs
   .argv;
 
 const path = argv._[0] || 'node_modules';
+// const path = argv._[0] || 'src';
 
-new Pruner(path).prune();
+new Pruner(path).prune().then(print);

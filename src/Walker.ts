@@ -10,7 +10,9 @@ export async function walk(dir: string, prunerF: (p: string, s: fs.Stats) => voi
   for (let item of items) {
     const itemPath = path.join(dir, item);
     const s = await fs.lstat(itemPath);
-    prunerF(itemPath, s);
-    if (s.isDirectory()) walk(itemPath, prunerF);
+    const pruned = await prunerF(itemPath, s);
+    if (!pruned && s.isDirectory()) {
+      await walk(itemPath, prunerF);
+    }
   }
 }

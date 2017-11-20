@@ -15,19 +15,22 @@ export class Pruner {
     const pruneStats = new PruneStats();
     await walk(this.dir, async (p, s) => {
       pruneStats.filesTotal++;
-      if (!this.prunable(p, s)) return;
+      pruneStats.sizeTotal += s.size;
+      if (!this.prunable(p, s)) return false;
       console.log('prune: ' + p);
 
       if (s.isDirectory()) {
         const ds = await this.dirStat(p);
         pruneStats.filesRemoved += ds.filesRemoved;
         pruneStats.filesTotal += ds.filesTotal;
-        // pruneStats.sizeRemoved += ds.sizeRemoved;
+        pruneStats.sizeRemoved += ds.sizeRemoved;
+        pruneStats.sizeTotal += ds.sizeTotal;
       }
 
-      await fs.remove(p);
+      // await fs.remove(p);
       pruneStats.filesRemoved++;
       pruneStats.sizeRemoved += s.size;
+      return true;
     })
     return pruneStats;
   }
@@ -41,7 +44,8 @@ export class Pruner {
     await walk(p, async (p, s) => {
       dirStat.filesTotal++;
       dirStat.filesRemoved++;
-      // dirStat.sizeRemoved += s.size;
+      dirStat.sizeRemoved += s.size;
+      dirStat.sizeTotal += s.size;
     })
     return dirStat;
   }
