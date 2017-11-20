@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { Defaults } from './Defaults';
+import { createConfig, Defaults } from './Defaults';
 import { PruneStats } from './PruneStats';
 import { walk } from './Walker';
 
@@ -13,12 +13,13 @@ export class Pruner {
     exts: Set<string>;
   }
 
-  constructor(dir='node_modules', prunes=Defaults) {
+  constructor(dir='node_modules', config='.prune.json') {
     this.dir = dir;
-    this.prunes = prunes;
+    const content = fs.readJSONSync(config);
+    this.prunes = content ? createConfig(content) : Defaults;
   }
 
-  async prune(): Promise<PruneStats> {
+  async prune(dry=false): Promise<PruneStats> {
     const pruneStats = new PruneStats();
     await walk(this.dir, async (p, s) => {
       pruneStats.filesTotal++;
@@ -33,7 +34,7 @@ export class Pruner {
         pruneStats.sizeTotal += ds.sizeTotal;
       }
 
-      await fs.remove(p);
+      if (!dry) await fs.remove(p);
       pruneStats.filesRemoved++;
       pruneStats.sizeRemoved += s.size;
       return true;

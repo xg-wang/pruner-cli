@@ -53,3 +53,15 @@ export const Defaults = {
 	files: DefaultFiles,
 	exts: DefaultExtensions
 }
+
+export function createConfig(content: any): {
+	dirs: Set<string>;
+	files: Set<string>;
+	exts: Set<string>;
+} {
+	return {
+		dirs: new Set(content.dirs),
+		files: new Set(content.files),
+		exts: new Set(content.exts)
+	}
+}
