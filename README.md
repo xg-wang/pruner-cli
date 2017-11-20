@@ -9,6 +9,10 @@ npm i -g pruner-cli
 prune
 ```
 
+## screenshot
+
+![prune](https://i.imgur.com/kEmAyY1.png)
+
 ## License
 
 MIT
