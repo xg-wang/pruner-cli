@@ -1,14 +1,21 @@
-import { PruneStats } from './PruneStats';
 import * as fs from 'fs-extra';
 import * as path from 'path';
+import { Defaults } from './Defaults';
+import { PruneStats } from './PruneStats';
 import { walk } from './Walker';
 
 export class Pruner {
 
   private dir: string;
+  private prunes: {
+    dirs: Set<string>;
+    files: Set<string>;
+    exts: Set<string>;
+  }
 
-  constructor(dir: string) {
-    this.dir = dir || 'node_modules';
+  constructor(dir='node_modules', prunes=Defaults) {
+    this.dir = dir;
+    this.prunes = prunes;
   }
 
   async prune(): Promise<PruneStats> {
@@ -17,7 +24,6 @@ export class Pruner {
       pruneStats.filesTotal++;
       pruneStats.sizeTotal += s.size;
       if (!this.prunable(p, s)) return false;
-      console.log('prune: ' + p);
 
       if (s.isDirectory()) {
         const ds = await this.dirStat(p);
@@ -27,7 +33,7 @@ export class Pruner {
         pruneStats.sizeTotal += ds.sizeTotal;
       }
 
-      // await fs.remove(p);
+      await fs.remove(p);
       pruneStats.filesRemoved++;
       pruneStats.sizeRemoved += s.size;
       return true;
@@ -36,7 +42,11 @@ export class Pruner {
   }
 
   prunable(p: string, stat: fs.Stats): boolean {
-    return stat.isFile() && path.extname(p) === '.md';
+    if (stat.isDirectory()) {
+      return this.prunes.dirs.has(path.basename(p));
+    }
+    return this.prunes.exts.has(path.extname(p))
+        || this.prunes.files.has(path.basename(p));
   }
 
   async dirStat(p: string): Promise<PruneStats> {

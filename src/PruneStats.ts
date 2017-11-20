@@ -5,16 +5,6 @@ export class PruneStats {
   sizeRemoved = 0;
 }
 
-export function print(stat: PruneStats) {
-  console.log(`
-    FilesTotal: ${stat.filesTotal}
-    FilesRemoved: ${stat.filesRemoved}
-
-    SizeTotal: ${pretty(stat.sizeTotal)}
-    SizeRemoved: ${pretty(stat.sizeRemoved)}
-  `)
-}
-
 /*
 Copyright (c) 2013, Yahoo! Inc. All rights reserved.
 Code licensed under the BSD License:
@@ -34,7 +24,7 @@ Pretty print a size from bytes
 @param {Number} [places=1] Number of decimal places to return
 */
 
-function pretty(size: number, nospace=false, one=false, places=1) {
+export function pretty(size: number, nospace=false, one=false, places=1) {
   let mysize;
 
   sizes.forEach((unit, id) => {

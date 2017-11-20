@@ -2,6 +2,15 @@
   "name": "pruner-cli",
   "version": "0.0.1",
   "description": "cli utility to prune node_modules files and dependencies",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xg-wang/pruner-cli"
+  },
+  "keywords": [
+    "cli",
+    "prune",
+    "node_modules"
+  ],
   "main": "lib/cli.js",
   "bin": {
     "node-prune": "lib/cli.js"
@@ -15,7 +24,6 @@
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^4.0.2",
-    "prettysize": "^1.1.0",
     "yargs": "^10.0.3"
   },
   "devDependencies": {
