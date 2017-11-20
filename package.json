@@ -6,7 +6,7 @@
   "bin": { "node-prune": "lib/cli.js"},
   "scripts": {
     "build": "tsc",
-    "serve": "tsc -w",
+    "dev": "tsc -w",
     "prepare": "npm run build"
   },
   "author": "Xingan Wang",
