@@ -5,11 +5,15 @@ import { walk } from './Walker';
 
 export class Pruner {
 
-  constructor() { }
+  private dir: string;
+
+  constructor(dir: string) {
+    this.dir = dir || 'node_modules';
+  }
 
   async prune(): Promise<PruneStats> {
     const pruneStats = new PruneStats();
-    await walk('node_modules', async (p, s) => {
+    await walk(this.dir, async (p, s) => {
       pruneStats.filesTotal++;
       if (!this.prunable(p, s)) return;
       console.log('prune: ' + p);

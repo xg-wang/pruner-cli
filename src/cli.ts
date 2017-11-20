@@ -8,4 +8,6 @@ const argv = yargs
   .version('version', '0.0.1').alias('version', 'v')
   .argv;
 
-console.log(argv._[0]);
+const path = argv._[0] || 'node_modules';
+
+new Pruner(path).prune();
