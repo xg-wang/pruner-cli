@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { createConfig, Defaults } from './Defaults';
-import { PruneStats } from './PruneStats';
+import { PruneStats, pretty } from './PruneStats';
 import { walk } from './Walker';
 
 export class Pruner {
@@ -11,32 +11,48 @@ export class Pruner {
     dirs: Set<string>;
     files: Set<string>;
     exts: Set<string>;
-  }
+  };
+  private configs: {
+    config: string;
+    dryrun: boolean;
+    verbose: boolean;
+  };
 
-  constructor(dir='node_modules', config='.prune.json') {
+  constructor(dir: string, configs: any) {
     this.dir = dir;
+    this.configs = configs;
     let content = null;
     try {
-      content = createConfig(fs.readJSONSync(config));
+      content = createConfig(fs.readJSONSync(this.configs.config));
     } catch (e) {
       content = Defaults;
     }
     this.prunes = content;
   }
 
-  async prune(dry=false): Promise<PruneStats> {
+  async prune(): Promise<PruneStats> {
+    const dry = this.configs.dryrun;
+    const verbose = this.configs.verbose;
     const pruneStats = new PruneStats();
     await walk(this.dir, async (p, s) => {
       pruneStats.filesTotal++;
       pruneStats.sizeTotal += s.size;
       if (!this.prunable(p, s)) return false;
 
+      let ds;
       if (s.isDirectory()) {
-        const ds = await this.dirStat(p);
+        ds = await this.dirStat(p);
         pruneStats.filesRemoved += ds.filesRemoved;
         pruneStats.filesTotal += ds.filesTotal;
         pruneStats.sizeRemoved += ds.sizeRemoved;
         pruneStats.sizeTotal += ds.sizeTotal;
+        if (verbose) {
+          console.info(`prune dir: ${p}, ${ds.filesRemoved}files, ${pretty(ds.sizeRemoved)}`);
+        }
+      }
+
+      if (verbose && s.isFile()) {
+        console.info(`prune file: ${p}, ${pretty(s.size)}`);
       }
 
       if (!dry) await fs.remove(p);

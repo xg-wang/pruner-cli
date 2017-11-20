@@ -12,11 +12,12 @@ prune
 Full usage see `prune -h`:
 
 ```plain
-Usage: node-prune <path> --config <name> --dryrun false
+Usage: node-prune <path>
 
 Options:
   --config, -c   <filename> config file name   [string] [default: ".prune.json"]
   --dryrun, -d   dry run                            [boolean] [default: "false"]
+  --verbose      log pruned file info               [boolean] [default: "false"]
   --help, -h     Show help                                             [boolean]
   --version, -v  Show version number                                   [boolean]
 ```

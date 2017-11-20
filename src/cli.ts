@@ -4,7 +4,7 @@ import { Pruner } from './Pruner';
 import { PruneStats, pretty } from './PruneStats';
 
 const argv = yargs
-  .usage('Prune node_modules files and dependencies\n\nUsage: node-prune <path> --config <name> --dryrun false')
+  .usage('Prune node_modules files and dependencies\n\nUsage: node-prune <path>')
   .option('config', {
     alias: 'c',
     description: '<filename> config file name',
@@ -17,17 +17,25 @@ const argv = yargs
     default: 'false',
     type: 'boolean'
   })
+  .option('verbose', {
+    description: 'log pruned file info',
+    default: 'false',
+    type: 'boolean'
+  })
   .help('help').alias('help', 'h')
-  .version('version', '0.0.4').alias('version', 'v')
+  .version('version', '0.0.5').alias('version', 'v')
   .argv;
 
-const path = argv._[0] || 'node_modules'
-    , config = argv.config
-    , dryrun = argv.dryrun;
+const path = argv._[0] || 'node_modules';
+const configs = {
+  config: argv.config,
+  dryrun: argv.dryrun,
+  verbose: argv.verbose
+};
 
 const startT = Date.now();
 
-new Pruner(path, config).prune(dryrun).then(print);
+new Pruner(path, configs).prune().then(print);
 
 function output(key: string, value: string) {
   console.log("\x1b[1m%s\x1b[0m ", key, value);
