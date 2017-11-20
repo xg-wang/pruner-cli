@@ -18,7 +18,7 @@ const argv = yargs
     type: 'boolean'
   })
   .help('help').alias('help', 'h')
-  .version('version', '0.0.1').alias('version', 'v')
+  .version('version', '0.0.2').alias('version', 'v')
   .argv;
 
 const path = argv._[0] || 'node_modules'
