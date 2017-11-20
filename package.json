@@ -13,7 +13,7 @@
   ],
   "main": "lib/cli.js",
   "bin": {
-    "node-prune": "lib/cli.js"
+    "prune": "lib/cli.js"
   },
   "scripts": {
     "build": "tsc",
