@@ -2,9 +2,11 @@
   "name": "pruner-cli",
   "version": "0.0.1",
   "description": "cli utility to prune node_modules files and dependencies",
-  "main": "cli.js",
+  "main": "lib/cli.js",
+  "bin": { "node-prune": "lib/cli.js"},
   "scripts": {
     "build": "tsc",
+    "serve": "tsc -w",
     "prepare": "npm run build"
   },
   "author": "Xingan Wang",
