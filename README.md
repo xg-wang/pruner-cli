@@ -63,7 +63,8 @@ Create a local `.prune.json` to customize. Defaults are:
     ".md",
     ".ts",
     ".jst",
-    ".coffee"
+    ".coffee",
+    ".tgz"
   ]
 }
 ```

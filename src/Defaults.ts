@@ -46,6 +46,7 @@ export const DefaultExtensions = new Set([
 	".ts",
 	".jst",
 	".coffee",
+	".tgz"
 ])
 
 export const Defaults = {

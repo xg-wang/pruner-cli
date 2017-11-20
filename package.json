@@ -1,6 +1,6 @@
 {
   "name": "pruner-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "cli utility to prune node_modules files and dependencies",
   "repository": {
     "type": "git",
