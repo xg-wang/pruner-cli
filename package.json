@@ -1,0 +1,22 @@
+{
+  "name": "pruner-cli",
+  "version": "0.0.1",
+  "description": "cli utility to prune node_modules files and dependencies",
+  "main": "cli.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "author": "Xingan Wang",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^4.0.2",
+    "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^4.0.5",
+    "@types/node": "^8.0.53",
+    "@types/yargs": "^8.0.2",
+    "typescript": "^2.6.1"
+  }
+}
