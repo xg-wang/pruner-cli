@@ -15,8 +15,13 @@ export class Pruner {
 
   constructor(dir='node_modules', config='.prune.json') {
     this.dir = dir;
-    const content = fs.readJSONSync(config);
-    this.prunes = content ? createConfig(content) : Defaults;
+    let content = null;
+    try {
+      content = createConfig(fs.readJSONSync(config));
+    } catch (e) {
+      content = Defaults;
+    }
+    this.prunes = content;
   }
 
   async prune(dry=false): Promise<PruneStats> {
