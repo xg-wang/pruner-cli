@@ -1,4 +1,5 @@
 # pruner-cli
+[![Build Status](https://travis-ci.org/xg-wang/pruner-cli.svg?branch=master)](https://travis-ci.org/xg-wang/pruner-cli)
 
 cli utility to prune redundant `node_modules` files.
 
