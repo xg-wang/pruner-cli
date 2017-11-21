@@ -2,7 +2,7 @@ import { Defaults } from './../src/Defaults';
 import { expect } from 'chai';
 import 'mocha';
 import { walk } from '../src/Walker';
-import { createFakeNM } from './helper';
+import { clearFakeNM, createFakeNM } from './helper';
 
 describe('Walker', function() {
 
@@ -25,6 +25,10 @@ describe('Walker', function() {
       expect(filesCount).to.equal(Defaults.files.size + Defaults.dirs.size + Defaults.exts.size + 1);
       expect(dirCount).to.equal(Defaults.dirs.size + 3);
     })
+  });
+
+  afterEach(async function() {
+    await clearFakeNM();
   })
 
 })

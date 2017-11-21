@@ -1,5 +1,6 @@
 lib/
 .prune.json
+test/fake_node_modules
 
 # Logs
 logs
