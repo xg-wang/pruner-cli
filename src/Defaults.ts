@@ -38,6 +38,7 @@ export const DefaultDirectories = new Set([
 	"examples",
 	"coverage",
 	".nyc_output",
+	".idea"
 ])
 
 // DefaultExtensions pruned.
