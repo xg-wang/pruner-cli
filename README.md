@@ -1,5 +1,4 @@
-# pruner-cli
-[![Build Status](https://travis-ci.org/xg-wang/pruner-cli.svg?branch=master)](https://travis-ci.org/xg-wang/pruner-cli)
+# pruner-cli [![Build Status](https://travis-ci.org/xg-wang/pruner-cli.svg?branch=master)](https://travis-ci.org/xg-wang/pruner-cli)
 
 cli utility to prune redundant `node_modules` files.
 
@@ -34,39 +33,52 @@ Create a local `.prune.json` to customize. Defaults are:
     "powered-test",
     "docs",
     "doc",
+    ".idea",
+    ".vscode",
     "website",
     "images",
     "assets",
     "example",
     "examples",
     "coverage",
-    ".nyc_output"
+    ".nyc_output",
+    ".circleci",
+    ".github"
   ],
   "files": [
     "Makefile",
     "Gulpfile.js",
     "Gruntfile.js",
+    ".DS_Store",
     ".tern-project",
     ".gitattributes",
     ".editorconfig",
     ".eslintrc",
+    ".eslintrc.js",
+    ".eslintignore",
+    ".npmignore",
     ".jshintrc",
     ".flowconfig",
     ".documentup.json",
     ".yarn-metadata.json",
     ".travis.yml",
+    "circle.yml",
+    ".coveralls.yml",
+    "CHANGES",
     "LICENSE.txt",
     "LICENSE",
     "AUTHORS",
     "CONTRIBUTORS",
-    ".yarn-integrity"
+    ".yarn-integrity",
+    ".yarnclean"
   ],
   "exts": [
     ".md",
     ".ts",
     ".jst",
     ".coffee",
-    ".tgz"
+    ".tgz",
+    ".swp"
   ]
 }
 ```

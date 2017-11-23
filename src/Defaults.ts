@@ -5,20 +5,28 @@ export const DefaultFiles = new Set([
 	"Makefile",
 	"Gulpfile.js",
 	"Gruntfile.js",
+	".DS_Store",
 	".tern-project",
 	".gitattributes",
 	".editorconfig",
 	".eslintrc",
+	".eslintrc.js",
+	".eslintignore",
+	".npmignore",
 	".jshintrc",
 	".flowconfig",
 	".documentup.json",
 	".yarn-metadata.json",
 	".travis.yml",
+	"circle.yml",
+	".coveralls.yml",
+	"CHANGES",
 	"LICENSE.txt",
 	"LICENSE",
 	"AUTHORS",
 	"CONTRIBUTORS",
 	".yarn-integrity",
+	".yarnclean"
 ])
 
 // DefaultDirectories pruned.
@@ -31,6 +39,8 @@ export const DefaultDirectories = new Set([
 	"powered-test",
 	"docs",
 	"doc",
+	".idea",
+	".vscode",
 	"website",
 	"images",
 	"assets",
@@ -38,7 +48,8 @@ export const DefaultDirectories = new Set([
 	"examples",
 	"coverage",
 	".nyc_output",
-	".idea"
+	".circleci",
+	".github"
 ])
 
 // DefaultExtensions pruned.
@@ -47,7 +58,8 @@ export const DefaultExtensions = new Set([
 	".ts",
 	".jst",
 	".coffee",
-	".tgz"
+	".tgz",
+	".swp"
 ])
 
 export const Defaults = {
