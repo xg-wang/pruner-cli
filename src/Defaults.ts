@@ -1,3 +1,4 @@
+import { IConfig } from './Defaults';
 // DefaultFiles pruned.
 //
 // Copied from yarn (mostly).
@@ -18,6 +19,7 @@ export const DefaultFiles = new Set([
 	".documentup.json",
 	".yarn-metadata.json",
 	".travis.yml",
+	".appveyor.yml",
 	"circle.yml",
 	".coveralls.yml",
 	"CHANGES",
@@ -62,17 +64,20 @@ export const DefaultExtensions = new Set([
 	".swp"
 ])
 
-export const Defaults = {
+export interface IConfig {
+	dirs: Set<string>;
+	files: Set<string>;
+	exts: Set<string>;
+	[index: number]: Set<string>;
+}
+
+export const Defaults: IConfig = {
 	dirs: DefaultDirectories,
 	files: DefaultFiles,
 	exts: DefaultExtensions
 }
 
-export function createConfig(content: any): {
-	dirs: Set<string>;
-	files: Set<string>;
-	exts: Set<string>;
-} {
+export function createConfig(content: any): IConfig {
 	return {
 		dirs: new Set(content.dirs),
 		files: new Set(content.files),

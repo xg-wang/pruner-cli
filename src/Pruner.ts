@@ -1,17 +1,13 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { createConfig, Defaults } from './Defaults';
+import { createConfig, Defaults, IConfig } from './Defaults';
 import { PruneStats, pretty } from './PruneStats';
 import { walk } from './Walker';
 
 export class Pruner {
 
   private dir: string;
-  private prunes: {
-    dirs: Set<string>;
-    files: Set<string>;
-    exts: Set<string>;
-  };
+  private prunes: IConfig;
   private configs: {
     config: string;
     dryrun: boolean;
@@ -28,6 +24,11 @@ export class Pruner {
       content = Defaults;
     }
     this.prunes = content;
+    for (const setKey in content) {
+      const set = content[setKey];
+      const newSet = [...set].map(e => e.toLowerCase());
+      this.prunes[setKey] = new Set(newSet);
+    }
   }
 
   async prune(): Promise<PruneStats> {
@@ -64,6 +65,7 @@ export class Pruner {
   }
 
   prunable(p: string, stat: fs.Stats): boolean {
+    p = p.toLowerCase();
     if (stat.isDirectory()) {
       return this.prunes.dirs.has(path.basename(p));
     }
