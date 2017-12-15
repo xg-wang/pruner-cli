@@ -11,15 +11,27 @@ export const DefaultFiles = new Set([
 	".gitattributes",
 	".editorconfig",
 	".eslintrc",
+	"eslint",
 	".eslintrc.js",
+	".eslintrc.json",
 	".eslintignore",
+	".stylelintrc",
+	"stylelint.config.js",
+	".stylelintrc.json",
+	".stylelintrc.yaml",
+	".stylelintrc.yml",
+	".stylelintrc.js",
+	".htmllintrc",
+	"htmllint.js",
+	".lint",
 	".npmignore",
 	".jshintrc",
 	".flowconfig",
 	".documentup.json",
 	".yarn-metadata.json",
 	".travis.yml",
-	".appveyor.yml",
+	"appveyor.yml",
+	".gitlab-ci.yml",
 	"circle.yml",
 	".coveralls.yml",
 	"CHANGES",
@@ -28,7 +40,14 @@ export const DefaultFiles = new Set([
 	"AUTHORS",
 	"CONTRIBUTORS",
 	".yarn-integrity",
-	".yarnclean"
+	".yarnclean",
+	"_config.yml",
+	".babelrc",
+	".yo-rc.json",
+	"jest.config.js",
+	"karma.conf.js",
+	".appveyor.yml",
+	"tsconfig.json"
 ])
 
 // DefaultDirectories pruned.
@@ -57,6 +76,7 @@ export const DefaultDirectories = new Set([
 // DefaultExtensions pruned.
 export const DefaultExtensions = new Set([
 	".md",
+	".markdown",
 	".ts",
 	".jst",
 	".coffee",

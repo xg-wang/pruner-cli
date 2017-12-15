@@ -22,7 +22,7 @@ Options:
   --version, -v  Show version number                                   [boolean]
 ```
 
-Create a local `.prune.json` to customize. Defaults are:
+Create a local `.prune.json` to customize, character case doesn't matter. Defaults are:
 
 ```json
 {
@@ -54,14 +54,27 @@ Create a local `.prune.json` to customize. Defaults are:
     ".gitattributes",
     ".editorconfig",
     ".eslintrc",
+    "eslint",
     ".eslintrc.js",
+    ".eslintrc.json",
     ".eslintignore",
+    ".stylelintrc",
+    "stylelint.config.js",
+    ".stylelintrc.json",
+    ".stylelintrc.yaml",
+    ".stylelintrc.yml",
+    ".stylelintrc.js",
+    ".htmllintrc",
+    "htmllint.js",
+    ".lint",
     ".npmignore",
     ".jshintrc",
     ".flowconfig",
     ".documentup.json",
     ".yarn-metadata.json",
     ".travis.yml",
+    "appveyor.yml",
+    ".gitlab-ci.yml",
     "circle.yml",
     ".coveralls.yml",
     "CHANGES",
@@ -70,10 +83,18 @@ Create a local `.prune.json` to customize. Defaults are:
     "AUTHORS",
     "CONTRIBUTORS",
     ".yarn-integrity",
-    ".yarnclean"
+    ".yarnclean",
+    "_config.yml",
+    ".babelrc",
+    ".yo-rc.json",
+    "jest.config.js",
+    "karma.conf.js",
+    ".appveyor.yml",
+    "tsconfig.json"
   ],
   "exts": [
     ".md",
+    ".markdown",
     ".ts",
     ".jst",
     ".coffee",
