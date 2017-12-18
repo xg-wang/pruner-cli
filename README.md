@@ -54,7 +54,6 @@ Create a local `.prune.json` to customize, character case doesn't matter. Defaul
     ".gitattributes",
     ".editorconfig",
     ".eslintrc",
-    "eslint",
     ".eslintrc.js",
     ".eslintrc.json",
     ".eslintignore",

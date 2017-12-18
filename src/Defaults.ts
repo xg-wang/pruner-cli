@@ -11,7 +11,6 @@ export const DefaultFiles = new Set([
 	".gitattributes",
 	".editorconfig",
 	".eslintrc",
-	"eslint",
 	".eslintrc.js",
 	".eslintrc.json",
 	".eslintignore",
