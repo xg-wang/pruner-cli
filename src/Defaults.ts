@@ -40,6 +40,7 @@ export const DefaultFiles = new Set([
 	"CONTRIBUTORS",
 	".yarn-integrity",
 	".yarnclean",
+	"yarn-error.log",
 	"_config.yml",
 	".babelrc",
 	".yo-rc.json",
