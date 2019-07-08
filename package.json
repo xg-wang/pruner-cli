@@ -15,10 +15,13 @@
   "bin": {
     "prune": "lib/cli.js"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "prepare": "npm run build",
+    "prepare": "yarn build",
     "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
   "author": "Xingan Wang",

@@ -6,21 +6,61 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
-strategy:
-  matrix:
-    node_8_x:
-      node_version: 8.x
-    node_10_x:
-      node_version: 10.x
+jobs:
+- job: 'linux'
+  pool:
+    vmImage: 'ubuntu-latest'
+  strategy:
+    matrix:
+      node_8_x:
+        node_version: 8.x
+      node_10_x:
+        node_version: 10.x
 
-steps:
-- task: NodeTool@0 
-  inputs:
-    versionSpec: $(node_version)
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: $(node_version)
 
-- script: |
-    yarn install
-    yarn run test
-  displayName: 'yarn install and test'
+  - script: |
+      yarn install
+      yarn run test
+    displayName: 'yarn install and test'
+- job: 'macOS'
+  pool:
+    vmImage: 'macOS-10.14'
+  strategy:
+    matrix:
+      node_8_x:
+        node_version: 8.x
+      node_10_x:
+        node_version: 10.x
+
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: $(node_version)
+
+  - script: |
+      yarn install
+      yarn run test
+    displayName: 'yarn install and test'
+- job: 'windows'
+  pool:
+    vmImage: 'vs2017-win2016'
+  strategy:
+    matrix:
+      node_8_x:
+        node_version: 8.x
+      node_10_x:
+        node_version: 10.x
+
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: $(node_version)
+
+  - script: |
+      yarn install
+      yarn run test
+    displayName: 'yarn install and test'
