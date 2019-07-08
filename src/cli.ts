@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as yargs from 'yargs';
-import { Pruner } from './Pruner';
-import { PruneStats, pretty } from './PruneStats';
+import { Pruner } from './pruner';
+import { PruneStats, pretty } from './prune-stats';
 
 const argv = yargs
   .usage('Prune node_modules files and dependencies\n\nUsage: node-prune <path>')

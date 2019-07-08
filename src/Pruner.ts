@@ -1,8 +1,8 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { createConfig, Defaults, IConfig } from './Defaults';
-import { PruneStats, pretty } from './PruneStats';
-import { walk } from './Walker';
+import { createConfig, Defaults, IConfig } from './defaults';
+import { PruneStats, pretty } from './prune-stats';
+import { walk } from './walker';
 
 export class Pruner {
 
@@ -80,6 +80,7 @@ export class Pruner {
       dirStat.filesRemoved++;
       dirStat.sizeRemoved += s.size;
       dirStat.sizeTotal += s.size;
+      return false;
     })
     return dirStat;
   }

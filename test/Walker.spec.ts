@@ -1,7 +1,7 @@
-import { Defaults } from './../src/Defaults';
+import { Defaults } from '../src/defaults';
 import { expect } from 'chai';
 import 'mocha';
-import { walk } from '../src/Walker';
+import { walk } from '../src/walker';
 import { clearFakeNM, createFakeNM } from './helper';
 
 describe('Walker', function() {
@@ -18,9 +18,10 @@ describe('Walker', function() {
 
   describe('walk', function() {
     it('should recursively walks files', async function() {
-      await walk(root, function(p, s) {
+      await walk(root, async function(p, s) {
         if (s.isFile()) filesCount++;
         if (s.isDirectory()) dirCount++;
+        return false;
       });
       expect(filesCount).to.equal(Defaults.files.size + Defaults.dirs.size + Defaults.exts.size + 1);
       expect(dirCount).to.equal(Defaults.dirs.size + 3);
