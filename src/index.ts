@@ -1,1 +1,1 @@
-import { Pruner } from './Pruner';
+export { Pruner } from './pruner';
