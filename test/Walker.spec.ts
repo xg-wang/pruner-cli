@@ -1,6 +1,5 @@
 import { Defaults } from '../src/defaults';
 import { expect } from 'chai';
-import 'mocha';
 import { walk } from '../src/walker';
 import { clearFakeNM, createFakeNM } from './helper';
 
@@ -29,7 +28,7 @@ describe('Walker', function() {
   });
 
   afterEach(async function() {
-    await clearFakeNM();
+    await clearFakeNM(root);
   })
 
 })
