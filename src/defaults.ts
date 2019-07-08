@@ -1,4 +1,3 @@
-import { IConfig } from './defaults';
 // DefaultFiles pruned.
 //
 // Copied from yarn (mostly).

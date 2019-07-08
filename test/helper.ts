@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
-import { Defaults } from './../src/Defaults';
+import { Defaults } from './../src/defaults';
 
 const ROOT = 'test/fake_node_modules';
 
