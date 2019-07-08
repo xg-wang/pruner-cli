@@ -28,6 +28,6 @@ export async function createFakeNM(): Promise<string> {
   return ROOT;
 }
 
-export async function clearFakeNM(): Promise<void> {
-  await fs.remove(ROOT);
+export async function clearFakeNM(root: string): Promise<void> {
+  await fs.remove(root);
 }
