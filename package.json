@@ -1,7 +1,7 @@
 {
   "name": "pruner-cli",
   "version": "0.2.1",
-  "description": "A cli utility to prune node_modules files and dependencies",
+  "description": "Prune node_modules files and save disk space",
   "repository": {
     "type": "git",
     "url": "https://github.com/xg-wang/pruner-cli"
