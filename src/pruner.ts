@@ -1,11 +1,10 @@
-import * as fs from 'fs-extra';
-import * as path from 'path';
-import { createConfig, Defaults, IConfig } from './defaults';
-import { PruneStats, pretty } from './prune-stats';
-import { walk } from './walker';
+import * as fs from "fs-extra";
+import * as path from "path";
+import { createConfig, Defaults, IConfig } from "./defaults";
+import { PruneStats, pretty } from "./prune-stats";
+import { walk } from "./walker";
 
 export class Pruner {
-
   private dir: string;
   private prunes: IConfig;
   private configs: {
@@ -48,7 +47,11 @@ export class Pruner {
         pruneStats.sizeRemoved += ds.sizeRemoved;
         pruneStats.sizeTotal += ds.sizeTotal;
         if (verbose) {
-          console.info(`prune dir: ${p}, ${ds.filesRemoved}files, ${pretty(ds.sizeRemoved)}`);
+          console.info(
+            `prune dir: ${p}, ${ds.filesRemoved}files, ${pretty(
+              ds.sizeRemoved
+            )}`
+          );
         }
       }
 
@@ -60,7 +63,7 @@ export class Pruner {
       pruneStats.filesRemoved++;
       pruneStats.sizeRemoved += s.size;
       return true;
-    })
+    });
     return pruneStats;
   }
 
@@ -69,8 +72,10 @@ export class Pruner {
     if (stat.isDirectory()) {
       return this.prunes.dirs.has(path.basename(p));
     }
-    return this.prunes.exts.has(path.extname(p))
-        || this.prunes.files.has(path.basename(p));
+    return (
+      this.prunes.exts.has(path.extname(p)) ||
+      this.prunes.files.has(path.basename(p))
+    );
   }
 
   async dirStat(p: string): Promise<PruneStats> {
@@ -81,8 +86,7 @@ export class Pruner {
       dirStat.sizeRemoved += s.size;
       dirStat.sizeTotal += s.size;
       return false;
-    })
+    });
     return dirStat;
   }
-
 }
