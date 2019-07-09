@@ -1,6 +1,7 @@
 # pruner-cli
 
 [![Build Status](https://dev.azure.com/xg-wang/pruner-cli/_apis/build/status/xg-wang.pruner-cli?branchName=master)](https://dev.azure.com/xg-wang/pruner-cli/_build/latest?definitionId=1&branchName=master)
+[![npm version](https://badge.fury.io/js/pruner-cli.svg)](https://badge.fury.io/js/pruner-cli)
 
 Prune `node_modules` files and save disk space.
 
