@@ -38,8 +38,6 @@ const configs = {
 
 const startT = Date.now();
 
-new Pruner(path, configs).prune().then(print);
-
 function output(key: string, value: string) {
   console.log("\x1b[1m%s\x1b[0m ", key, value);
 }
@@ -51,3 +49,9 @@ function print(stat: PruneStats) {
   output("size removed", pretty(stat.sizeRemoved));
   output("duration", `${Date.now() - startT}ms`);
 }
+
+(async () => {
+  let pruner = new Pruner(path, configs);
+  let stat = await pruner.prune();
+  print(stat);
+})();
