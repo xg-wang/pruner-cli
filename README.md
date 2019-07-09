@@ -2,26 +2,30 @@
 
 [![Build Status](https://dev.azure.com/xg-wang/pruner-cli/_apis/build/status/xg-wang.pruner-cli?branchName=master)](https://dev.azure.com/xg-wang/pruner-cli/_build/latest?definitionId=1&branchName=master)
 
-A cli utility to prune redundant `node_modules` files.
+Prune `node_modules` files and save disk space.
 
 ## usage
 
 ```bash
 npm i -g pruner-cli
 prune
+# or use npx
+npx pruner-cli
 ```
 
 Full usage see `prune -h`:
 
 ```plain
-Usage: node-prune <path>
+Prune node_modules files and save disk space
+
+Usage: prune <path>
 
 Options:
+  --version, -v  Show version number                                   [boolean]
   --config, -c   <filename> config file name   [string] [default: ".prune.json"]
   --dryrun, -d   dry run                            [boolean] [default: "false"]
   --verbose      log pruned file info               [boolean] [default: "false"]
   --help, -h     Show help                                             [boolean]
-  --version, -v  Show version number                                   [boolean]
 ```
 
 Create a local `.prune.json` to customize, character case doesn't matter. Defaults are:

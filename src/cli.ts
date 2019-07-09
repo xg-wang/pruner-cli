@@ -4,9 +4,7 @@ import { Pruner } from "./pruner";
 import { PruneStats, pretty } from "./prune-stats";
 
 const argv = yargs
-  .usage(
-    "Prune node_modules files and dependencies\n\nUsage: node-prune <path>"
-  )
+  .usage("Prune node_modules files and save disk space\n\nUsage: prune <path>")
   .option("config", {
     alias: "c",
     description: "<filename> config file name",
@@ -26,7 +24,6 @@ const argv = yargs
   })
   .help("help")
   .alias("help", "h")
-  .version("version", "0.2.1")
   .alias("version", "v").argv;
 
 const path = argv._[0] || "node_modules";
