@@ -1,7 +1,10 @@
-import * as fs from 'fs-extra';
-import * as path from 'path';
+import * as fs from "fs-extra";
+import * as path from "path";
 
-export async function walk(dir: string, prunerF: (path: string, stats: fs.Stats) => Promise<boolean>): Promise<void> {
+export async function walk(
+  dir: string,
+  prunerF: (path: string, stats: fs.Stats) => Promise<boolean>
+): Promise<void> {
   let s = await fs.lstat(dir);
   if (!s.isDirectory()) return;
 

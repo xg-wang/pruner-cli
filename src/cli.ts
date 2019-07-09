@@ -1,32 +1,35 @@
 #!/usr/bin/env node
-import * as yargs from 'yargs';
-import { Pruner } from './pruner';
-import { PruneStats, pretty } from './prune-stats';
+import * as yargs from "yargs";
+import { Pruner } from "./pruner";
+import { PruneStats, pretty } from "./prune-stats";
 
 const argv = yargs
-  .usage('Prune node_modules files and dependencies\n\nUsage: node-prune <path>')
-  .option('config', {
-    alias: 'c',
-    description: '<filename> config file name',
-    default: '.prune.json',
-    type: 'string'
+  .usage(
+    "Prune node_modules files and dependencies\n\nUsage: node-prune <path>"
+  )
+  .option("config", {
+    alias: "c",
+    description: "<filename> config file name",
+    default: ".prune.json",
+    type: "string"
   })
-  .option('dryrun', {
-    alias: 'd',
-    description: 'dry run',
-    default: 'false',
-    type: 'boolean'
+  .option("dryrun", {
+    alias: "d",
+    description: "dry run",
+    default: "false",
+    type: "boolean"
   })
-  .option('verbose', {
-    description: 'log pruned file info',
-    default: 'false',
-    type: 'boolean'
+  .option("verbose", {
+    description: "log pruned file info",
+    default: "false",
+    type: "boolean"
   })
-  .help('help').alias('help', 'h')
-  .version('version', '0.2.1').alias('version', 'v')
-  .argv;
+  .help("help")
+  .alias("help", "h")
+  .version("version", "0.2.1")
+  .alias("version", "v").argv;
 
-const path = argv._[0] || 'node_modules';
+const path = argv._[0] || "node_modules";
 const configs = {
   config: argv.config,
   dryrun: argv.dryrun,
@@ -42,9 +45,9 @@ function output(key: string, value: string) {
 }
 
 function print(stat: PruneStats) {
-  output('files total', stat.filesTotal.toString())
-  output('files removed', stat.filesRemoved.toString())
-  output('size total', pretty(stat.sizeTotal))
-  output('size removed', pretty(stat.sizeRemoved))
-  output('duration', `${Date.now() - startT}ms`)
+  output("files total", stat.filesTotal.toString());
+  output("files removed", stat.filesRemoved.toString());
+  output("size total", pretty(stat.sizeTotal));
+  output("size removed", pretty(stat.sizeRemoved));
+  output("duration", `${Date.now() - startT}ms`);
 }

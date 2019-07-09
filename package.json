@@ -1,7 +1,7 @@
 {
   "name": "pruner-cli",
   "version": "0.2.1",
-  "description": "cli utility to prune node_modules files and dependencies",
+  "description": "A cli utility to prune node_modules files and dependencies",
   "repository": {
     "type": "git",
     "url": "https://github.com/xg-wang/pruner-cli"
@@ -13,7 +13,8 @@
   ],
   "main": "lib/cli.js",
   "bin": {
-    "prune": "lib/cli.js"
+    "prune": "lib/cli.js",
+    "pruner-cli": "lib/cli.js"
   },
   "files": [
     "lib"
@@ -22,9 +23,10 @@
     "build": "tsc",
     "dev": "tsc -w",
     "prepare": "yarn build",
-    "test": "mocha -r ts-node/register test/**/*.spec.ts"
+    "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "changelog": "lerna-changelog"
   },
-  "author": "Xingan Wang",
+  "author": "Thomas Wang<wangxgwxg@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^8.1.0",
@@ -40,8 +42,17 @@
     "@types/node": "^12.6.1",
     "@types/yargs": "^13.0.0",
     "chai": "^4.1.2",
+    "husky": "^3.0.0",
+    "lerna-changelog": "^0.8.2",
     "mocha": "^6.1.4",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
     "ts-node": "^8.3.0",
     "typescript": "~3.5.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

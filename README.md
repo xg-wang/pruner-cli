@@ -1,6 +1,8 @@
-# pruner-cli [![Build Status](https://travis-ci.org/xg-wang/pruner-cli.svg?branch=master)](https://travis-ci.org/xg-wang/pruner-cli)
+# pruner-cli
 
-cli utility to prune redundant `node_modules` files.
+[![Build Status](https://dev.azure.com/xg-wang/pruner-cli/_apis/build/status/xg-wang.pruner-cli?branchName=master)](https://dev.azure.com/xg-wang/pruner-cli/_build/latest?definitionId=1&branchName=master)
+
+A cli utility to prune redundant `node_modules` files.
 
 ## usage
 
@@ -91,21 +93,9 @@ Create a local `.prune.json` to customize, character case doesn't matter. Defaul
     ".appveyor.yml",
     "tsconfig.json"
   ],
-  "exts": [
-    ".md",
-    ".markdown",
-    ".ts",
-    ".jst",
-    ".coffee",
-    ".tgz",
-    ".swp"
-  ]
+  "exts": [".md", ".markdown", ".ts", ".jst", ".coffee", ".tgz", ".swp"]
 }
 ```
-
-## screenshot
-
-![prune](https://i.imgur.com/kEmAyY1.png)
 
 ## License
 
