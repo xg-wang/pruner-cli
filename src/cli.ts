@@ -9,28 +9,28 @@ const argv = yargs
     alias: "c",
     description: "<filename> config file name",
     default: ".prune.json",
-    type: "string"
+    type: "string",
   })
   .option("dryrun", {
     alias: "d",
     description: "dry run",
     default: "false",
-    type: "boolean"
+    type: "boolean",
   })
   .option("verbose", {
     description: "log pruned file info",
     default: "false",
-    type: "boolean"
+    type: "boolean",
   })
   .help("help")
   .alias("help", "h")
   .alias("version", "v").argv;
 
-const path = argv._[0] || "node_modules";
+const path = String(argv._[0]) || "node_modules";
 const configs = {
   config: argv.config,
   dryrun: argv.dryrun,
-  verbose: argv.verbose
+  verbose: argv.verbose,
 };
 
 const startT = Date.now();
